@@ -12,11 +12,11 @@ function App() {
       axios.post("https://eng-python-project.herokuapp.com/translate", {"input": value})
       .then((response) => {
         console.log(response);
-        document.getElementsByClassName("sentiment-text")[0].innerText = response.value;
+        document.getElementsByClassName("sentiment-text")[0].innerText = response.data;
       })
       .catch((err) => {
         console.log(err);
-        document.getElementsByClassName("sentiment-text")[0].innerText = "Error"
+        document.getElementsByClassName("sentiment-text")[0].innerText = err
       });
     }
   }
