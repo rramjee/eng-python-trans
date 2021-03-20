@@ -12,7 +12,7 @@ function App() {
       axios.post("https://eng-python-project.herokuapp.com/translate", {"input": value})
       .then((response) => {
         console.log(response);
-        document.getElementsByClassName("sentiment-text")[0].innerText = response.data;
+        document.getElementsByClassName("sentiment-text")[0].innerHTML = response.data.replace("'","");
       })
       .catch((err) => {
         console.log(err);
@@ -26,11 +26,11 @@ function App() {
   }
 
   return (
-    <div style={{height:"100vh", width:"200vw", alignItems:"center", justifyContent:"center", textAlign:"center", backgroundImage: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)", display:"table-cell", verticalAlign: "middle", horizontalAlign:"middle"}}>
+    <div style={{height:"100vh", width:"200vw", backgroundImage: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)", display:"table-cell", verticalAlign: "middle", horizontalAlign:"middle"}}>
         <h1>Text to Python Generator</h1>
         <Input transparent onChange={handleValueChange} action={{color: 'teal', onClick: () => handleClick(), content: "Get Python Code Now"}} placeholder='Write...' style={{border:"1px solid #fff", padding:"10px", borderRadius: "5px", width: "1000px"}} />
         <p  style={{marginTop: "20px", color: "white"}}></p>
-        <Input className="sentiment-text" transparent onChange={handleValueChange}  style={{border:"1px solid #fff",background:"black",color:"white",  textAlign:"left", padding:"10px", borderRadius: "5px", width: "1000px", height:"300px"}} />
+        <Input className="sentiment-text" transparent onChange={handleValueChange}  style={{border:"1px solid #fff",background:"black",color:"white", padding:"10px", borderRadius: "5px", width: "1000px", height:"300px"}} />
         
     </div>
   );
